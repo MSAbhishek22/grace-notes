@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grace Notes — Ask in faith. Answer only from Scripture.</title>
+<meta name="description" content="A grounded church Q&A app for the AI for Church Hackathon 2026. Ask a faith or pastoral question and get an answer drawn only from 43 bundled King James Version passages, with a citation for every claim.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#ask">Skip to the question box</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Grace Notes — home">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      <span class="brand-name">Grace Notes</span>
+      <span class="brand-sub">AI for Church Hackathon 2026</span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#ask">Ask</a>
+      <a href="#explorer">Verse Explorer</a>
+      <a href="#sermon">Sermon Notes</a>
+      <a href="#how">How grounding works</a>
+    </nav>
+    <button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" title="Reduce motion">Low-motion: off</button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Discipleship &amp; Spiritual Growth · Track entry</p>
+      <h1 id="hero-title"><span class="kinetic"><span>A</span><span>s</span><span>k</span></span> in faith.<br>
+      Answer <em>only</em> from Scripture.</h1>
+      <p class="lede">Grace Notes is a church Q&amp;A companion that never invents doctrine.
+      Ask a question about comfort, forgiveness, prayer, hope or grief, and it answers
+      <strong>only</strong> from 43 bundled King James Version passages — every claim
+      carrying its book, chapter and verse. If no passage speaks to your question,
+      it says so plainly.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#ask">Ask a question</a>
+        <a class="btn btn-ghost" href="#explorer">Browse the passages</a>
+      </div>
+      <p class="hero-note">No account. No server. No data leaves your device — the whole
+      corpus and the retrieval run in your browser.</p>
+    </div>
+
+    <div class="hero-glass" aria-label="Stained-glass window. Choose a pane to explore a topic.">
+      <div class="glass-frame" id="glass-frame">
+        <div class="glass-arch" aria-hidden="true"></div>
+        <div class="glass-grid" id="glass-grid"><!-- panes injected by app.js --></div>
+        <p class="glass-caption">Light through the window — <span id="glass-caption-topic">ten topics, one Word</span>.
+        <br>Choose a pane to explore its passages.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="honesty-bar wrap" role="note">
+    <strong>Honest by design:</strong> answers come only from the 43 bundled KJV passages
+    (public domain). This app does not call any AI model and does not browse the web.
+    Anything it cannot ground, it will not claim.
+  </div>
+
+  <!-- ASK -->
+  <section id="ask" class="section wrap" aria-labelledby="ask-title">
+    <p class="section-no">01</p>
+    <h2 id="ask-title">Ask, and it shall be answered — from Scripture alone</h2>
+    <p class="section-lede">Type a faith or pastoral question. Grace Notes searches the bundled
+    passages and answers with citations. Try one of these:</p>
+    <div class="sample-chips" id="sample-chips" aria-label="Sample questions">
+      <button type="button" data-q="How can I find comfort when I am grieving?">How can I find comfort when I am grieving?</button>
+      <button type="button" data-q="What does the Bible say about forgiveness?">What does the Bible say about forgiveness?</button>
+      <button type="button" data-q="How should I pray when I feel anxious?">How should I pray when I feel anxious?</button>
+      <button type="button" data-q="Where can I find hope for the future?">Where can I find hope for the future?</button>
+      <button type="button" data-q="How do I know God loves me?">How do I know God loves me?</button>
+      <button type="button" data-q="What is the stock market outlook for next week?">What is the stock market outlook?</button>
+    </div>
+    <form id="ask-form" class="ask-form">
+      <label for="question-input">Your question</label>
+      <textarea id="question-input" rows="3" maxlength="500" placeholder="e.g. How can I find peace when my heart is troubled?" aria-describedby="ask-hint"></textarea>
+      <p id="ask-hint" class="hint">500 characters max. Your question never leaves this page.</p>
+      <div class="ask-actions">
+        <button type="submit" class="btn btn-primary" id="ask-submit">Ask Grace Notes</button>
+        <button type="button" class="btn btn-ghost" id="ask-clear">Clear</button>
+      </div>
+    </form>
+    <div id="answer-region" class="answer-region" aria-live="polite">
+      <p class="empty-state">No question asked yet. Your grounded answer — with a citation for every claim — will appear here.</p>
+    </div>
+  </section>
+
+  <!-- EXPLORER -->
+  <section id="explorer" class="section wrap" aria-labelledby="explorer-title">
+    <p class="section-no">02</p>
+    <h2 id="explorer-title">Verse &amp; topic explorer</h2>
+    <p class="section-lede">All 43 passages, browsable by topic. Every card shows the full KJV text
+    and a one-line gist. Tap <em>Copy verse</em> to take it into your notes.</p>
+    <div class="explorer-controls">
+      <div class="topic-chips" id="topic-chips" role="group" aria-label="Filter by topic"><!-- injected --></div>
+      <label class="explorer-search">
+        <span class="visually-hidden">Search passages</span>
+        <input type="search" id="explorer-search" placeholder="Search a word, book or reference — e.g. peace, Psalm, John 3:16" aria-label="Search passages">
+      </label>
+    </div>
+    <p class="result-count" id="result-count" aria-live="polite"></p>
+    <div class="passage-grid" id="passage-grid"><!-- injected --></div>
+  </section>
+
+  <!-- SERMON NOTES -->
+  <section id="sermon" class="section wrap" aria-labelledby="sermon-title">
+    <p class="section-no">03</p>
+    <h2 id="sermon-title">Sermon-note grounding</h2>
+    <p class="section-lede">Paste your sermon notes — a paragraph is enough. Grace Notes finds the
+    passages your notes touch and turns them into grounded follow-up questions
+    and answers for the week ahead. It will not invent a point your notes do not ground.</p>
+    <form id="sermon-form" class="sermon-form">
+      <label for="sermon-input">Your sermon notes</label>
+      <textarea id="sermon-input" rows="6" maxlength="3000" placeholder="e.g. Sunday's sermon was on forgiveness — forgiving others as God forgave us, letting go of bitterness, seventy times seven…"></textarea>
+      <p class="hint">3,000 characters max. Notes stay in your browser.</p>
+      <div class="ask-actions">
+        <button type="submit" class="btn btn-primary" id="sermon-submit">Ground my notes</button>
+        <button type="button" class="btn btn-ghost" id="sermon-clear">Clear</button>
+      </div>
+    </form>
+    <div id="sermon-results" class="sermon-results" aria-live="polite">
+      <p class="empty-state">No notes grounded yet. Your follow-up questions will appear here, each tied to a passage.</p>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how" class="section wrap" aria-labelledby="how-title">
+    <p class="section-no">04</p>
+    <h2 id="how-title">How grounding works</h2>
+    <ol class="how-steps">
+      <li><strong>Bundle, don't browse.</strong> 43 public-domain KJV passages, chosen across ten pastoral topics, ship with the page. <span>corpus.js</span></li>
+      <li><strong>Retrieve, don't generate.</strong> Your words are matched against each passage's keywords, topics and text — in your browser, with no model and no server. <span>retrieval.js</span></li>
+      <li><strong>Cite every claim.</strong> The answer lists each passage's gist beside its reference, then quotes it word for word. <span>app.js</span></li>
+      <li><strong>Say “not found” honestly.</strong> Below a grounding threshold, the answer is a plain “not found in the provided passages” — never invented doctrine. <span>retrieval.js</span></li>
+    </ol>
+    <p class="how-note">Faithfulness &amp; Responsible AI — the hackathon's own criterion — is the point of this
+    design: a small, checkable corpus a pastor can audit beats a large model a congregation cannot verify.
+    A human stays in the loop: every answer is meant to be read, checked against the cited verse, and
+    weighed by a church leader, not obeyed blindly.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p><strong>Grace Notes</strong> — built by <strong>M S Abhishek</strong> (GitHub: MSAbhishek22, Shobhit University, Meerut)
+    for the <strong>AI for Church Hackathon 2026</strong>, Discipleship &amp; Spiritual Growth track.
+    Scripture quotations are from the King James Version (public domain).</p>
+    <p class="footer-links">
+      <a href="https://aiforchurch.com/hackathon" target="_blank" rel="noopener">AI for Church Hackathon</a> ·
+      <a href="https://github.com/MSAbhishek22/grace-notes" target="_blank" rel="noopener">Source on GitHub</a>
+    </p>
+    <p class="footer-verse">“Thy word is a lamp unto my feet, and a light unto my path.” — Psalm 119:105 (KJV)</p>
+  </div>
+</footer>
+
+<script src="corpus.js"></script>
+<script src="retrieval.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
