@@ -1,7 +1,11 @@
 # Grace Notes — Ask in faith. Answer only from Scripture.
 
+**Live demo:** https://grace-notes.vercel.app
+
+Ask in faith — and get an answer drawn only from Scripture, with a citation for every claim.
+
 **AI for Church Hackathon 2026** · Discipleship & Spiritual Growth track ·
-Built by **M S Abhishek** (GitHub: MSAbhishek22 · Shobhit University, Meerut)
+Built by **M S Abhishek** (GitHub: MSAbhishek22)
 
 A grounded church Q&A web app. Ask a faith or pastoral question and get an
 answer drawn **only** from 43 bundled King James Version passages (public
