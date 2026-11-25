@@ -136,6 +136,9 @@
     renderVerses();
   }
 
+  // The 3D topic wheel (js/cylinder.js) filters the explorer through this.
+  window.GraceNotesSetTopic = setTopic;
+
   function renderVerses() {
     var q = searchInput.value;
     var list = retrieval.searchPassages(q, activeTopic === "all" ? null : activeTopic);

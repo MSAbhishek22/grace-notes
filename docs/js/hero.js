@@ -128,6 +128,47 @@ import * as THREE from "../vendor/three.module.js";
   medallion.position.set(0, 1.5, 0.01);
   group.add(medallion);
 
+  // Floating glass orbs: one for each of the app's ten topics, in the
+  // topic colours, drifting in front of the glass. They sit inside the
+  // window's span so they stay on screen at every width.
+  // (ThreeUI glass-card pattern; palette "glass orbs".)
+  var TOPIC_COLOURS = ["#8e2f38", "#2f4e7a", "#5b4a8a", "#c99a3c", "#a63a4b",
+    "#2e6b4f", "#7a5a2e", "#3e6b7a", "#b07a2e", "#4a4458"];
+  var orbs = [];
+  var orbGeo = new THREE.SphereGeometry(1, 24, 18);
+  for (var o = 0; o < TOPIC_COLOURS.length; o++) {
+    var oang = (o / TOPIC_COLOURS.length) * Math.PI * 2 + 0.35;
+    var ox = Math.cos(oang) * 1.7, oy = 0.1 + Math.sin(oang) * 3.0;
+    var orad = 0.2 + (o % 3) * 0.05;
+    var omat = new THREE.MeshStandardMaterial({
+      color: TOPIC_COLOURS[o], emissive: TOPIC_COLOURS[o], emissiveIntensity: 0.55,
+      transparent: true, opacity: 0.88, roughness: 0.15, metalness: 0.1
+    });
+    var orb = new THREE.Mesh(orbGeo, omat);
+    orb.scale.setScalar(orad);
+    orb.position.set(ox, oy, 0.5 + (o % 3) * 0.35);
+    orb.userData = { bx: ox, by: oy, ph: o * 0.9, sp: 0.5 + (o % 4) * 0.12 };
+    group.add(orb);
+    orbs.push(orb);
+  }
+
+  // Golden light helix rising through the centre of the window, in front
+  // of the panes — light itself, spiralling up. Two turns, 36 dots.
+  // (ThreeUI Aniwall "slowly turning iridescent helix".)
+  var helix = new THREE.Group();
+  var helixGeo = new THREE.SphereGeometry(0.06, 12, 10);
+  var helixMatA = new THREE.MeshBasicMaterial({ color: 0xe3c07a });
+  var helixMatB = new THREE.MeshBasicMaterial({ color: 0xc99a3c });
+  for (var h = 0; h < 36; h++) {
+    var ht = h / 36; // 0..1 up the helix
+    var ha = ht * Math.PI * 4; // two full turns
+    var dot = new THREE.Mesh(helixGeo, h % 2 ? helixMatA : helixMatB);
+    dot.position.set(Math.cos(ha) * 0.35, -3.0 + ht * 6.1, Math.sin(ha) * 0.35);
+    helix.add(dot);
+  }
+  helix.position.set(0, 0, 0.6);
+  group.add(helix);
+
   // Light rays slanting out of the window toward the viewer.
   var rays = [];
   var rayMat = new THREE.MeshBasicMaterial({
@@ -197,15 +238,35 @@ import * as THREE from "../vendor/three.module.js";
     }, { threshold: 0.02 }).observe(canvas);
   }
 
+  /* ---- Scroll-driven 3D rotation: the window turns gently as the
+     reader scrolls away from it. On first load it sits square-on,
+     fully visible; scrolling adds the turn. (ThreeUI pinned-workflow
+     pattern; GSAP ScrollTrigger-style scroll storytelling; palette
+     "scroll-driven 3D rotation".) ---- */
+  var scrollProgress = 0;
+  function updateScroll() {
+    var vh = window.innerHeight || 1;
+    scrollProgress = Math.max(0, Math.min(1, window.scrollY / vh));
+    if (reduceMotion) return;
+    if (visible) renderFrame(clock.getElapsedTime());
+  }
+  window.addEventListener("scroll", updateScroll, { passive: true });
+
   var clock = new THREE.Clock();
   var smoothRY = 0, smoothRX = 0;
   function renderFrame(t) {
     var sway = Math.sin(t * 0.5);
     smoothRY += (targetRY - smoothRY) * 0.05;
     smoothRX += (targetRX - smoothRX) * 0.05;
-    group.rotation.y = sway * 0.03 + smoothRY * 0.6;
-    group.rotation.x = smoothRX * 0.6;
+    group.rotation.y = sway * 0.03 + smoothRY * 0.6 + scrollProgress * 0.5;
+    group.rotation.x = smoothRX * 0.6 - scrollProgress * 0.06;
     medallion.rotation.z = Math.sin(t * 0.15) * 0.02;
+    helix.rotation.y = t * 0.25;
+    orbs.forEach(function (orb) {
+      var u = orb.userData;
+      orb.position.y = u.by + Math.sin(t * u.sp + u.ph) * 0.09;
+      orb.position.x = u.bx + Math.sin(t * u.sp * 0.6 + u.ph) * 0.05;
+    });
     rays.forEach(function (ray, i) {
       ray.material.opacity = 0.03 + 0.015 * Math.sin(t * 0.6 + i * 1.3);
     });

@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<canvas id="page-particles" aria-hidden="true"></canvas>
+
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="#top">Grace <span>Notes</span></a>
@@ -98,6 +100,25 @@
     </div>
   </section>
 
+  <!-- VERSES IN THE ROUND -->
+  <section class="section" id="round">
+    <div class="wrap">
+      <p class="eyebrow reveal">Verses in the round</p>
+      <h2 class="reveal">Ten topics, turning slowly.</h2>
+      <p class="lede reveal" data-delay="1">Each face of the wheel is one of the ten topics, in its own colour, with the number of passages it holds. Drag it, use the arrow keys, or tap a face — tapping filters the verse explorer below to that topic.</p>
+      <div class="cylinder-wrap reveal" data-delay="2">
+        <canvas id="cylinder-canvas" tabindex="0" aria-label="Three-dimensional wheel of the ten topics. Use left and right arrow keys to turn it, Enter to open the facing topic."></canvas>
+        <div class="cylinder-controls">
+          <button type="button" class="cyl-btn" id="cyl-prev" aria-label="Turn the wheel to the previous topic">‹ Previous</button>
+          <span id="cyl-face-label" aria-live="polite"></span>
+          <button type="button" class="cyl-btn" id="cyl-next" aria-label="Turn the wheel to the next topic">Next ›</button>
+        </div>
+        <p class="cylinder-note">Drag to spin · Arrow keys turn it · Click a face to filter the explorer</p>
+      </div>
+      <p id="cyl-fallback" class="verse-empty" hidden>The wheel could not start in this browser — the verse explorer below still lists all 43 passages.</p>
+    </div>
+  </section>
+
   <!-- LIVE DEMO -->
   <section class="section" id="try">
     <div class="wrap">
@@ -159,6 +180,7 @@
 </main>
 
 <footer class="site-footer">
+  <canvas id="footer-canvas" aria-hidden="true"></canvas>
   <div class="wrap foot-grid">
     <div>
       <h3>Grace Notes</h3>
@@ -175,5 +197,8 @@
 <script src="js/retrieval.js"></script>
 <script src="js/main.js"></script>
 <script type="module" src="js/hero.js"></script>
+<script type="module" src="js/cylinder.js"></script>
+<script type="module" src="js/particles.js"></script>
+<script type="module" src="js/footer-scene.js"></script>
 </body>
 </html>

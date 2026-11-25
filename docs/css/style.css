@@ -262,6 +262,46 @@ p { margin: 0 0 1em; }
 .site-footer p { color: #a89f83; font-size: 0.95rem; max-width: 520px; }
 .foot-links { display: flex; gap: 12px; flex-wrap: wrap; }
 
+/* ---------- Page-wide drifting light (Three.js, js/particles.js) ---------- */
+#page-particles {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  z-index: 3; pointer-events: none;
+}
+
+/* ---------- Verses in the round (3D topic wheel) ---------- */
+.cylinder-wrap {
+  margin-top: 36px; background: var(--night-2); border: 1px solid var(--line-dark);
+  border-radius: var(--radius); padding: 20px 20px 14px;
+}
+#cylinder-canvas {
+  width: 100%; height: 420px; display: block; cursor: grab;
+  touch-action: pan-y;
+}
+#cylinder-canvas:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; border-radius: 10px; }
+.cylinder-controls {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-top: 6px; flex-wrap: wrap;
+}
+.cyl-btn {
+  background: transparent; border: 1px solid rgba(243, 233, 210, 0.4); color: var(--parchment);
+  border-radius: 999px; padding: 9px 16px; font-size: 0.95rem; cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.cyl-btn:hover { transform: translateY(-2px); border-color: var(--gold-soft); background: rgba(201, 154, 60, 0.14); }
+#cyl-face-label {
+  font-family: var(--serif); font-size: 1.15rem; color: var(--gold-soft);
+  text-align: center;
+}
+.cylinder-note { margin: 10px 0 4px; font-size: 0.9rem; color: #a89f83; text-align: center; }
+
+/* ---------- Footer ---------- */
+.site-footer { position: relative; overflow: hidden; }
+#footer-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  display: block; pointer-events: none;
+}
+.site-footer .foot-grid { position: relative; z-index: 2; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 820px) {
   .cards, .steps { grid-template-columns: 1fr; }
@@ -271,6 +311,7 @@ p { margin: 0 0 1em; }
   .section { padding: 72px 0; }
   .ask-row { flex-direction: column; }
   .ask-row .btn { text-align: center; }
+  #cylinder-canvas { height: 340px; }
 }
 
 /* ---------- Reduced motion ---------- */
@@ -278,6 +319,6 @@ p { margin: 0 0 1em; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .kinetic .word > span { transform: none; opacity: 1; transition: none; }
-  .btn, .chip, .topic-btn { transition: none; }
-  .btn:hover, .chip:hover, .topic-btn:hover { transform: none; }
+  .btn, .chip, .topic-btn, .cyl-btn { transition: none; }
+  .btn:hover, .chip:hover, .topic-btn:hover, .cyl-btn:hover { transform: none; }
 }
