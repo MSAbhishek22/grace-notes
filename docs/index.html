@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grace Notes — Ask in faith. Answer only from Scripture.</title>
+<meta name="description" content="Grace Notes is a small church Q&A app. Every answer comes from 43 King James Version passages, each claim with its citation. If no passage speaks to your question, it says so plainly.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c0e24'/%3E%3Cpath d='M16 4 L24 12 L24 26 L8 26 L8 12 Z' fill='%23c99a3c'/%3E%3Crect x='14' y='12' width='4' height='12' fill='%230c0e24'/%3E%3Crect x='10' y='17' width='12' height='3' fill='%230c0e24'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Grace <span>Notes</span></a>
+    <nav aria-label="Sections">
+      <a href="#problem">The problem</a>
+      <a href="#how">How it works</a>
+      <a href="#try">Try it</a>
+      <a href="#verses">Verses</a>
+      <a class="nav-cta" href="https://grace-notes-60qo0zrop-m-s-abhisheks-projects.vercel.app" target="_blank" rel="noopener">Open the live app</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Grace Notes">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="hero-content">
+        <p class="eyebrow">A grounded church Q&amp;A app</p>
+        <h1 class="kinetic" id="hero-title">Ask in faith. Answer only from Scripture.</h1>
+        <p class="lede">Grace Notes answers questions about comfort, forgiveness, prayer, hope and more — drawn only from 43 King James Version passages. Every claim carries its citation. And when no passage speaks to your question, it says so plainly instead of inventing an answer.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="https://grace-notes-60qo0zrop-m-s-abhisheks-projects.vercel.app" target="_blank" rel="noopener">Open the live app</a>
+          <a class="btn btn-ghost" href="#try">Try a question below</a>
+          <a class="btn btn-ghost" href="https://github.com/MSAbhishek22/grace-notes" target="_blank" rel="noopener">View the code</a>
+        </div>
+        <p class="hero-note">Built by <strong>M S Abhishek</strong> · No backend, no model call, no network — nothing you type leaves your device.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section section-light" id="problem">
+    <div class="wrap">
+      <p class="eyebrow reveal">The problem</p>
+      <h2 class="reveal">Church questions deserve answers you can check.</h2>
+      <p class="lede reveal" data-delay="1">A question about faith is not a trivia question. When someone asks in a hard week, the answer should come from somewhere they can open, read and trust — not from a confident voice that never shows its source.</p>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="pane-dot" style="background:#8e2f38"></div>
+          <h3>No source, no trust</h3>
+          <p>An answer without a verse is an opinion in a robe. If you cannot see where a claim comes from, you cannot weigh it — you can only take it on trust.</p>
+        </article>
+        <article class="card reveal" data-delay="1">
+          <div class="pane-dot" style="background:#2f4e7a"></div>
+          <h3>A confident guess is still a guess</h3>
+          <p>Most chat tools answer every question, even when they have nothing solid to stand on. In matters of faith, a made-up answer is worse than no answer at all.</p>
+        </article>
+        <article class="card reveal" data-delay="2">
+          <div class="pane-dot" style="background:#c99a3c"></div>
+          <h3>A pastor should be able to audit it</h3>
+          <p>A small set of passages that a church leader can read in one sitting beats a large model no congregation can verify. Small and checkable is the point.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <p class="eyebrow reveal">How it works</p>
+      <h2 class="reveal">Three rules, kept in the open.</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">1</div>
+          <h3>43 passages. Nothing else.</h3>
+          <p>The whole corpus is 43 passages from the King James Version, in the public domain, bundled inside the app. There is no other source to draw from.</p>
+        </div>
+        <div class="step reveal" data-delay="1">
+          <div class="num">2</div>
+          <h3>Every claim carries its citation.</h3>
+          <p>Each answer quotes the passage it rests on, word for word, and wears a confidence badge — High, Medium or Low — so you can see how firmly it is grounded.</p>
+        </div>
+        <div class="step reveal" data-delay="2">
+          <div class="num">3</div>
+          <h3>If nothing fits, it says so.</h3>
+          <p>When no passage speaks to a question, Grace Notes answers “not found in the provided passages” — honestly, rather than dressing up a guess as doctrine.</p>
+        </div>
+      </div>
+      <div class="honesty-strip reveal">
+        <strong>Honest by design</strong>
+        <p>No backend. No model call. No network. The corpus and the retrieval run entirely in your browser, and nothing you type leaves your device. A human stays in the loop — every answer is meant to be checked against its cited verse.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE DEMO -->
+  <section class="section" id="try">
+    <div class="wrap">
+      <p class="eyebrow reveal">Try it — live, in this page</p>
+      <h2 class="reveal">Ask a question. Watch it show its work.</h2>
+      <p class="lede reveal" data-delay="1">This demo runs the same retrieval code as the app, on the same 43 passages, entirely in your browser. Pick a question below, or type your own.</p>
+      <div class="demo-box reveal" data-delay="2">
+        <div class="chips" role="group" aria-label="Example questions">
+          <button type="button" class="chip" data-q="How do I find comfort when I am afraid?">How do I find comfort when I am afraid?</button>
+          <button type="button" class="chip" data-q="What does the Bible say about forgiveness?">What does the Bible say about forgiveness?</button>
+          <button type="button" class="chip" data-q="How should I pray?">How should I pray?</button>
+          <button type="button" class="chip" data-q="Where can I find hope for the future?">Where can I find hope for the future?</button>
+          <button type="button" class="chip chip-honest" data-q="What is the stock market doing today?">What is the stock market doing today?</button>
+        </div>
+        <form class="ask-row" id="ask-form">
+          <label for="ask-input" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Your question</label>
+          <input id="ask-input" type="text" maxlength="500" autocomplete="off"
+            placeholder="Ask about comfort, forgiveness, prayer, hope, love, strength, guidance, peace, gratitude or grief…">
+          <button class="btn btn-gold" type="submit">Ask</button>
+        </form>
+        <div class="answer" id="answer" aria-live="polite"></div>
+        <p class="demo-note">The last example is deliberate: the stock market is not in the 43 passages, so the honest answer is “not found”. The full app also grounds sermon notes — paste your notes and it offers grounded follow-up questions for the week.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERSE EXPLORER -->
+  <section class="section" id="verses">
+    <div class="wrap">
+      <p class="eyebrow reveal">Verse &amp; topic explorer</p>
+      <h2 class="reveal">All 43 passages, open to browse.</h2>
+      <p class="lede reveal" data-delay="1">Every passage in the corpus, with its reference and its topics. Filter by topic or search the text — the same passages the answers are drawn from.</p>
+      <div class="topic-filter reveal" data-delay="2" id="topic-filter" role="group" aria-label="Filter by topic"></div>
+      <div class="explorer-tools reveal" data-delay="2">
+        <label for="verse-search" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Search passages</label>
+        <input id="verse-search" type="search" placeholder="Search the verses — try “shepherd”, “peace” or “Psalm 23”…">
+        <span class="explorer-count" id="verse-count"></span>
+      </div>
+      <div class="verse-grid" id="verse-grid"></div>
+    </div>
+  </section>
+
+  <!-- FACTS -->
+  <section class="section section-light" id="facts">
+    <div class="wrap">
+      <p class="eyebrow reveal">The facts, plainly stated</p>
+      <h2 class="reveal">Small, checked, and honest about it.</h2>
+      <div class="facts">
+        <div class="fact reveal"><div class="num">43</div><div class="lbl">KJV passages in the corpus</div></div>
+        <div class="fact reveal" data-delay="1"><div class="num">10</div><div class="lbl">Topics, from comfort to grief</div></div>
+        <div class="fact reveal" data-delay="1"><div class="num">67/67</div><div class="lbl">Unit checks passing</div></div>
+        <div class="fact reveal" data-delay="2"><div class="num">17/17</div><div class="lbl">End-to-end checks passing</div></div>
+        <div class="fact reveal" data-delay="2"><div class="num">0</div><div class="lbl">Servers, models or accounts needed</div></div>
+      </div>
+      <p class="reveal" style="margin-top:36px; color:var(--ink-soft)">Built 12 November 2026 by M S Abhishek. The app is 787 lines in total — corpus, retrieval, interface and styles — and runs as a static site with no build step.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Grace Notes</h3>
+      <p>Ask in faith. Answer only from Scripture. Scripture quotations are from the King James Version, which is in the public domain. The app is released under the MIT licence.</p>
+    </div>
+    <div class="foot-links">
+      <a class="btn btn-gold" href="https://grace-notes-60qo0zrop-m-s-abhisheks-projects.vercel.app" target="_blank" rel="noopener">Open the live app</a>
+      <a class="btn btn-ghost" href="https://github.com/MSAbhishek22/grace-notes" target="_blank" rel="noopener">GitHub repo</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/corpus.js"></script>
+<script src="js/retrieval.js"></script>
+<script src="js/main.js"></script>
+<script type="module" src="js/hero.js"></script>
+</body>
+</html>
